@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER YiFeng Huang "withoutbug@gmail.com"
 
-ENV TOMCAT_DOWNLOAD_URL http://mirror.sdunix.com/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
+ENV TOMCAT_DOWNLOAD_URL http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.0.41/bin/apache-tomcat-8.0.41.tar.gz
 ENV CATALINA_HOME /opt/tomcat
 
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
