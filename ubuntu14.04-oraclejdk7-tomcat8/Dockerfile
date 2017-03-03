@@ -31,7 +31,7 @@ RUN apt-get clean autoclean && \
 EXPOSE 8080
 EXPOSE 8009
 
-VOLUME "/opt/tomcat"
+#VOLUME "/opt/tomcat/webapps"
 WORKDIR /opt/tomcat
 
 # Modify these options as needed
