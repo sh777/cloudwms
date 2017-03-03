@@ -34,5 +34,9 @@ EXPOSE 8009
 VOLUME "/opt/tomcat"
 WORKDIR /opt/tomcat
 
+# Modify these options as needed
+env JAVA_OPTS="-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom"
+env CATALINA_OPTS="-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
 # Launch Tomcat
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
