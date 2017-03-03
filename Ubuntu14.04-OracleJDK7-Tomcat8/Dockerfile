@@ -31,4 +31,10 @@ RUN apt-get clean autoclean && \
 EXPOSE 8080
 EXPOSE 8009
 
+VOLUME "/opt/tomcat/webapps"
+WORKDIR /opt/tomcat
+
 CMD ["/opt/tomcat/bin/tomcat.sh"]
+
+# Launch Tomcat
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
