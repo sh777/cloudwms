@@ -22,7 +22,7 @@ RUN wget -q ${TOMCAT_DOWNLOAD_URL} && \
     mv apache-tomcat* ${CATALINA_HOME}
 
 # Remove unneeded apps and files
-RUN rm -rf ${CATALINA_HOME}/webapps/examples ${CATALINA_HOME}/webapps/docs ${CATALINA_HOME}/webapps/ROOT ${CATALINA_HOME}/webapps/host-manager ${CATALINA_HOME}/RELEASE-NOTES ${CATALINA_HOME}/RUNNING.txt ${CATALINA_HOME}/bin/*.bat  ${CATALINA_HOME}/bin/*.tar.gz
+# RUN rm -rf ${CATALINA_HOME}/webapps/examples ${CATALINA_HOME}/webapps/docs ${CATALINA_HOME}/webapps/ROOT ${CATALINA_HOME}/webapps/host-manager ${CATALINA_HOME}/RELEASE-NOTES ${CATALINA_HOME}/RUNNING.txt ${CATALINA_HOME}/bin/*.bat  ${CATALINA_HOME}/bin/*.tar.gz
 
 RUN apt-get clean autoclean && \
     apt-get autoremove -y && \
@@ -31,10 +31,8 @@ RUN apt-get clean autoclean && \
 EXPOSE 8080
 EXPOSE 8009
 
-VOLUME "/opt/tomcat/webapps"
+VOLUME "/opt/tomcat"
 WORKDIR /opt/tomcat
-
-CMD ["/opt/tomcat/bin/tomcat.sh"]
 
 # Launch Tomcat
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
