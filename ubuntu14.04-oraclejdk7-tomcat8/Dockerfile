@@ -13,13 +13,19 @@ ENV CLOUDWMS_HOME /opt/cloudwms
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
 RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
 
-# Install Oracle JDK 7
+# Install Oracle JDK 7, Maven, Git
 RUN apt-get update && \
     apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository ppa:webupd8team/java && \
     apt-get update && \
     apt-get install -y --no-install-recommends oracle-java7-installer && \
+    apt-get -y install maven && \
+    apt-get -y install git && \
     rm -rf /var/lib/apt/lists/*
+    
+RUN apt-get clean autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
     
 # Install Tomcat 8
 RUN wget -q ${TOMCAT_DOWNLOAD_URL} && \
@@ -37,20 +43,9 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
     mv zookeeper* ${ZOOKEEPER_HOME} && \
     cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg
 
-# Install Maven
-RUN apt-get update && \
-    apt-get -y install maven
-
-# Install Git
-RUN apt-get -y install git
-
-
-RUN apt-get clean autoclean && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/{apt,dpkg,cache,log}/
-    
+# Git source code    
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
-RUN . ${CLOUDWMS_HOME}\build.sh
+    . ${CLOUDWMS_HOME}/build.sh
 
 EXPOSE 8080
 EXPOSE 8009
