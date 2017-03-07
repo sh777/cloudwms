@@ -31,7 +31,7 @@ RUN wget -q ${TOMCAT_DOWNLOAD_URL} && \
 RUN rm -rf ${CATALINA_HOME}/webapps/examples ${CATALINA_HOME}/webapps/docs ${CATALINA_HOME}/webapps/ROOT ${CATALINA_HOME}/webapps/host-manager ${CATALINA_HOME}/RELEASE-NOTES ${CATALINA_HOME}/RUNNING.txt ${CATALINA_HOME}/bin/*.bat  ${CATALINA_HOME}/bin/*.tar.gz
 
 # Install ZooKeeper
-RUN wget -q ${TOMCAT_DOWNLOAD_URL} && \
+RUN wget -q ${ZOOKEEPER_DOWNLOAD_UR} && \
     tar zxf zookeeper-*.tar.gz && \
     rm zookeeper-*.tar.gz && \
     mv zookeeper* ${ZOOKEEPER_HOME} && \
