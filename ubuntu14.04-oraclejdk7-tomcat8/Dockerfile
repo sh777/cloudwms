@@ -7,7 +7,7 @@ ENV CATALINA_HOME /opt/tomcat
 ENV ZOOKEEPER_DOWNLOAD_URL http://apache.osuosl.org/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
 ENV ZOOKEEPER_HOME /opt/zookeeper
 
-ENV CLOUDWMS_REPO_URL https://bot:h9wAJWUCrZzHpvmm7drR@bitbucket.org/AI-CORE/cloudwms-src.git
+ENV CLOUDWMS_REPO_URL https://anobug:h9wAJWUCrZzHpvmm7drR@bitbucket.org/AI-CORE/cloudwms-src.git
 ENV CLOUDWMS_HOME /opt/cloudwms
 
 RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
