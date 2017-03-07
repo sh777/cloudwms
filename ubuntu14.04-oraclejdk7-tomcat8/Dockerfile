@@ -38,10 +38,10 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
     cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg
 
 # Install Maven
-RUN sudo apt-get -y install maven
+RUN apt-get -y install maven
 
 # Install Git
-RUN sudo apt-get -y install git
+RUN apt-get -y install git
 
 
 RUN apt-get clean autoclean && \
