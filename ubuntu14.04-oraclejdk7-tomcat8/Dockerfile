@@ -43,13 +43,19 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
     mv zookeeper* ${ZOOKEEPER_HOME} && \
     cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg
 
-# Git source code    
-RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
-    mkdir -p ~/.m2 && \
+# Get source code from bitbucket   
+RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME}
+   
+    
+# Build source code
+RUN mkdir -p ~/.m2 && \
     cp ${CLOUDWMS_HOME}/quick-start配置/settings.xml ~/.m2/settings.xml && \
     chmod 777 ${CLOUDWMS_HOME}/build.sh && \
     cd ${CLOUDWMS_HOME} && \
     ${CLOUDWMS_HOME}/build.sh
+    
+# Deploy war packages to tomcat
+RUN find ${CLOUDWMS_HOME} -name '*.war' -type f -exec s h -c 'cp "$@" "$0"'${CATALINA_HOME}/webapps {} +
 
 EXPOSE 8080
 EXPOSE 8009
