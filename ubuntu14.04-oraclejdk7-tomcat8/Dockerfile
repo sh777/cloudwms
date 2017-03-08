@@ -45,7 +45,8 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
 
 # Git source code    
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
-    chmod 777 ${CLOUDWMS_HOME} && \
+    mkdir -p ~/.m2 && \
+    cp ${CLOUDWMS_HOME}/quick-start配置/settings.xml ~/.m2/settings.xml && \
     chmod 777 ${CLOUDWMS_HOME}/build.sh && \
     cd ${CLOUDWMS_HOME} && \
     ${CLOUDWMS_HOME}/build.sh
