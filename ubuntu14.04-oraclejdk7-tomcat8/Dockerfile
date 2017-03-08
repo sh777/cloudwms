@@ -57,7 +57,7 @@ RUN find ${CLOUDWMS_HOME} -name '*.war' -type f -exec sh -c 'cp "$@" "$0"' ${CAT
 EXPOSE 8080
 EXPOSE 8009
 
-VOLUME "/opt/tomcat/webapps"
+# VOLUME "/opt/tomcat/webapps"
 VOLUME "/opt/tomcat/logs"
 WORKDIR /opt/tomcat
 
