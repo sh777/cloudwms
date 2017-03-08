@@ -41,7 +41,9 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
     tar zxf zookeeper-*.tar.gz && \
     rm zookeeper-*.tar.gz && \
     mv zookeeper* ${ZOOKEEPER_HOME} && \
-    cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg
+    cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg && 、
+    chmod +x ${ZOOKEEPER_HOME}/bin/
+    ${ZOOKEEPER_HOME}/bin/zkServer.sh start
 
 # Get source code from bitbucket and build 
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
