@@ -46,7 +46,8 @@ RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
 # Git source code    
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
     cd ${CLOUDWMS_HOME} && \
-    . build.sh
+    ls & \
+    build.sh
 
 EXPOSE 8080
 EXPOSE 8009
