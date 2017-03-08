@@ -58,6 +58,7 @@ EXPOSE 8080
 EXPOSE 8009
 
 VOLUME "/opt/tomcat/webapps"
+VOLUME "/opt/tomcat/logs"
 WORKDIR /opt/tomcat
 
 # Modify these options as needed
