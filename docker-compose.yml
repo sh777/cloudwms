@@ -2,10 +2,10 @@ version: '2'
 
 services:
     zookeeper:
-        image: "zookeeper:latest"
+        image: zookeeper:latest
     redis:
         image: redis:latest
     webapp:
-        image: "sh777/cloudwms:latest"
+        image: sh777/cloudwms:latest
         volumes:
             - /opt/tomcat/logs:/opt/tomcat/logs
