@@ -1,8 +1,6 @@
 version: '2'
 
 services:
-    db:
-        image: "sh777/cloudwms-mysql:latest"    
     zookeeper:
         image: "zookeeper:latest"
     redis:
