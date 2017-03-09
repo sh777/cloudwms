@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    db:
+        image: "sh777/cloudwms-mysql:latest"    
+    zookeeper:
+        image: "zookeeper:latest"
+    redis:
+        image: redis:latest
+    webapp:
+        image: "sh777/cloudwms:latest"
+        volumes:
+            - /opt/tomcat/logs:/opt/tomcat/logs
