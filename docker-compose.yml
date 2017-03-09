@@ -7,5 +7,8 @@ services:
         image: redis:latest
     webapp:
         image: sh777/cloudwms:latest
+        ports:
+            - "8080:8080"
+            - "8009:8009"
         volumes:
             - /opt/tomcat/logs:/opt/tomcat/logs
