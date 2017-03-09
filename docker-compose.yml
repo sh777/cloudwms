@@ -1,14 +1,17 @@
 version: '2'
 
 services:
-    zookeeper:
+    zk:
         image: zookeeper:latest
-    redis:
+    rds:
         image: redis:latest
     webapp:
         image: sh777/cloudwms:latest
         ports:
             - "8080:8080"
             - "8009:8009"
+        depends_on:
+            - "db"
+            - "rds"
         volumes:
             - /opt/tomcat/logs:/opt/tomcat/logs
