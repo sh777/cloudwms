@@ -37,9 +37,9 @@ RUN rm -rf ${CATALINA_HOME}/webapps/examples ${CATALINA_HOME}/webapps/docs ${CAT
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
     mkdir -p ~/.m2 && \
     cp ${CLOUDWMS_HOME}/quick-start配置/settings.xml ~/.m2/settings.xml && \
-    chmod +x ${CLOUDWMS_HOME}/build.sh && \
+    chmod +x ${CLOUDWMS_HOME}/build-demo.sh && \
     cd ${CLOUDWMS_HOME} && \
-    ${CLOUDWMS_HOME}/build.sh
+    ${CLOUDWMS_HOME}/build-demo.sh
     
 # Deploy war packages to tomcat
 RUN find ${CLOUDWMS_HOME} -name '*.war' -type f -exec sh -c 'cp "$@" "$0"' ${CATALINA_HOME}/webapps {} +
