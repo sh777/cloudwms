@@ -4,9 +4,6 @@ MAINTAINER YiFeng Huang "withoutbug@gmail.com"
 ENV TOMCAT_DOWNLOAD_URL http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.0.41/bin/apache-tomcat-8.0.41.tar.gz
 ENV CATALINA_HOME /opt/tomcat
 
-ENV ZOOKEEPER_DOWNLOAD_URL http://apache.osuosl.org/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
-ENV ZOOKEEPER_HOME /opt/zookeeper
-
 ENV CLOUDWMS_REPO_URL https://anobug:h9wAJWUCrZzHpvmm7drR@bitbucket.org/AI-CORE/cloudwms-src.git
 ENV CLOUDWMS_HOME /opt/cloudwms
 
@@ -35,15 +32,6 @@ RUN wget -q ${TOMCAT_DOWNLOAD_URL} && \
     
 # Remove unneeded apps and files
 RUN rm -rf ${CATALINA_HOME}/webapps/examples ${CATALINA_HOME}/webapps/docs ${CATALINA_HOME}/webapps/ROOT ${CATALINA_HOME}/webapps/host-manager ${CATALINA_HOME}/RELEASE-NOTES ${CATALINA_HOME}/RUNNING.txt ${CATALINA_HOME}/bin/*.bat  ${CATALINA_HOME}/bin/*.tar.gz
-
-# Install ZooKeeper
-RUN wget -q ${ZOOKEEPER_DOWNLOAD_URL} && \
-    tar zxf zookeeper-*.tar.gz && \
-    rm zookeeper-*.tar.gz && \
-    mv zookeeper* ${ZOOKEEPER_HOME} && \
-    cp ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg ${ZOOKEEPER_HOME}/conf/zoo.cfg && \
-    chmod +x ${ZOOKEEPER_HOME}/bin/ && \
-    ${ZOOKEEPER_HOME}/bin/zkServer.sh start
 
 # Get source code from bitbucket and build 
 RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
