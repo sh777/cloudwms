@@ -53,7 +53,7 @@ WORKDIR /opt/tomcat
 
 # Modify these options as needed
 ENV JAVA_OPTS="-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom"
-ENV CATALINA_OPTS="-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+ENV CATALINA_OPTS="-Xms1024M -Xmx2048M -server -XX:+UseParallelGC"
 
 # Launch Tomcat
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
