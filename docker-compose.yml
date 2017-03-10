@@ -16,8 +16,6 @@ services:
             - "6379:6379"
     activemq:
         image: rmohr/activemq
-        healthcheck:
-            test: ["CMD-SHELL","nc -z localhost 61616"]
         ports:
             - "61616:61616"
             - "8161:8161"
@@ -39,6 +37,4 @@ services:
                 condition: service_healthy
             rds:
                 condition: service_healthy
-            activemq:
-                condition: service_healthy
-
+            
