@@ -42,7 +42,8 @@ RUN git clone ${CLOUDWMS_REPO_URL} ${CLOUDWMS_HOME} && \
     ${CLOUDWMS_HOME}/build-demo.sh
     
 # Deploy war packages to tomcat
-RUN find ${CLOUDWMS_HOME} -name '*.war' -type f -exec sh -c 'cp "$@" "$0"' ${CATALINA_HOME}/webapps {} +
+# RUN find ${CLOUDWMS_HOME} -name '*.war' -type f -exec sh -c 'cp "$@" "$0"' ${CATALINA_HOME}/webapps {} +
+RUN cp ${CLOUDWMS_HOME}/tiger-store/target/tiger-store.war ${CATALINA_HOME}/webapps
 
 EXPOSE 8080
 EXPOSE 8009
