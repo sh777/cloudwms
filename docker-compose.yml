@@ -3,10 +3,14 @@ version: '2.1'
 services:
     zk:
         image: zookeeper:latest
+        healthcheck:
+            test: nc -z localhost 2181
         ports:
             - "2181:2181"
     rds:
         image: redis:latest
+        healthcheck:
+            test: nc -z localhost 6379
         ports:
             - "6379:6379"
     webapp:
