@@ -23,7 +23,7 @@ services:
     proxy_dep:
         image: busybox
         depends_on:
-            db:
+            zk:
                 condition: service_healthy
             rds:
                 condition: service_healthy
