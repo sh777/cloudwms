@@ -3,15 +3,26 @@ version: '2'
 services:
     zk:
         image: zookeeper:latest
+        ports:
+            - "2181:2181"
     rds:
         image: redis:latest
+        ports:
+            - "6379:6379"
     webapp:
         image: sh777/cloudwms:latest
         ports:
             - "8080:8080"
             - "8009:8009"
         depends_on:
-            - "zk"
-            - "rds"
+            - proxy_dep
         volumes:
             - /opt/tomcat/logs:/opt/tomcat/logs
+    # This is a proxy used to block beats until all services are healthy.
+    # See: https://github.com/docker/compose/issues/4369
+    proxy_dep:
+        image: busybox
+        depends_on:
+            zk:     { condition: service_healthy }
+            rds:    { condition: service_healthy }
+
