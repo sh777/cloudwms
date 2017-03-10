@@ -14,6 +14,13 @@ services:
             interval: 30s
         ports:
             - "6379:6379"
+    activemq:
+        image: rmohr/activemq
+        healthcheck:
+            test: ["CMD-SHELL","nc -z localhost 61616"]
+        ports:
+            - "61616:61616"
+            - "8161:8161"
     webapp:
         image: sh777/cloudwms:latest
         ports:
@@ -31,5 +38,7 @@ services:
             zk:
                 condition: service_healthy
             rds:
+                condition: service_healthy
+            activemq:
                 condition: service_healthy
 
