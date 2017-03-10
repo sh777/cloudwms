@@ -10,7 +10,8 @@ services:
     rds:
         image: redis:latest
         healthcheck:
-            test: ["CMD","redis-cli","-h","redis","-p","6379","ping"]
+            test: "redis-cli ping"
+            interval: 30s
         ports:
             - "6379:6379"
     webapp:
