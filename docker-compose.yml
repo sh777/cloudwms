@@ -10,7 +10,7 @@ services:
     rds:
         image: redis:latest
         healthcheck:
-            test: ["CMD-SHELL","nc -z localhost 6379"]
+            test: ["CMD","redis-cli","-h","redis","-p","6379","ping"]
         ports:
             - "6379:6379"
     webapp:
